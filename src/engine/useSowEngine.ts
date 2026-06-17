@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Pit, Seed, Talisman } from '../types';
 import { getNextValidPit } from './logic';
 import { initAudio, playClack, playCapture, playPasu } from './audio';
@@ -34,10 +34,16 @@ export const useSowEngine = (
 
   const handlePasuTap = (pitId: number) => {
       const pit = turnRef.current.localPits[pitId];
-      if (pit && pit.pasuActive) {
+      if (pit && pit.pasuActive && !pit.isKasi) {
           pit.pasuActive = false; 
           turnRef.current.pasuTaps.push(pitId);
+          
+          const captured = [...pit.seeds];
+          setStash(s => [...s, ...captured]);
+          pit.seeds = [];
+          
           playPasu();
+          setPits([...turnRef.current.localPits]);
       }
   };
 
@@ -46,7 +52,7 @@ export const useSowEngine = (
       initAudio();
       setIsSowing(true);
       
-      let localPits = pits.map(p => ({ ...p, seeds: [...p.seeds] }));
+      let localPits = pits.map(p => ({ ...p, seeds: [...p.seeds], pasuActive: false }));
       turnRef.current.localPits = localPits;
       turnRef.current.chips = 0;
       turnRef.current.mult = 1;
@@ -100,7 +106,7 @@ export const useSowEngine = (
 
           turnRef.current.chips += dropChips;
 
-          if (currentSeeds.length === 4) {
+          if (currentSeeds.length === 4 && !localPits[currIdx].isKasi) {
               localPits[currIdx].pasuActive = true;
           } else {
               localPits[currIdx].pasuActive = false;
