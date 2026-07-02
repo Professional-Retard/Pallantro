@@ -1,12 +1,13 @@
 import { Ante, Talisman } from './types';
 
 export const TALISMANS: Talisman[] = [
-  { id: 't_aayar', name: 'Aayar (The Herder)', tier: 'common', description: '+4 Mult when tapping a Pasu.', cost: 10 },
+  { id: 't_aayar', name: 'Aayar (The Herder)', tier: 'common', description: '+1 Mult when tapping a Pasu.', cost: 10 },
   { id: 't_kalasam', name: 'Kalasam (Brass Pot)', tier: 'common', description: '+50 Chips on initial Sow from odd-numbered pit.', cost: 10 },
-  { id: 't_pannaiyar', name: 'Pannaiyar (Landlord)', tier: 'uncommon', description: 'x1.2 Mult per Rubbish Hole on board.', cost: 15 },
-  { id: 't_charal', name: 'Charal (The Drizzle)', tier: 'uncommon', description: 'Top row drops grant +25 Chips instead of +10.', cost: 15 },
-  { id: 't_viyabari', name: 'Viyabari (Merchant)', tier: 'rare', description: 'x2 Mult when unlocking Kasi bank.', cost: 25 },
-  { id: 't_sitharal', name: 'Sitharal (The Scatter)', tier: 'rare', description: 'Chain leaps over an empty pit once per turn.', cost: 25 }
+  { id: 't_thief', name: 'Kallan (Thief)', tier: 'uncommon', description: 'Capturing seeds from the Enemy side gives +200 chips per seed.', cost: 15 },
+  { id: 't_saaral', name: 'Saaral (The Drizzle)', tier: 'uncommon', description: 'Top row drops grant +25 Chips instead of +10.', cost: 15 },
+  { id: 't_kuberan', name: 'Kuberan (Hoarder)', tier: 'rare', description: 'Personal stash contributes x3 to score after each turn.', cost: 20 },
+  { id: 't_kasi_greed', name: 'Kasi Greed (Banker)', tier: 'rare', description: 'x3 Mult when claiming Kasi. -10% chips if enemy claims.', cost: 25 },
+  { id: 't_mystery', name: 'Mystery (???)', tier: 'mystery', description: 'Grants a random powerful effect for this Ante.', cost: 20 }
 ];
 
 export const ANTES: Ante[] = [

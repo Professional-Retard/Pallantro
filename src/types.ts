@@ -11,12 +11,13 @@ export interface Pit {
   isKasi: boolean;
   isRubbish: boolean;
   pasuActive: boolean;
+  claimedBy?: 'player' | 'enemy' | 'both';
 }
 
 export interface Talisman {
   id: string;
   name: string;
-  tier: 'common' | 'uncommon' | 'rare';
+  tier: 'common' | 'uncommon' | 'rare' | 'mystery';
   description: string;
   cost: number;
 }
